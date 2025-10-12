@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora ACOS x ROAS</title>
+    
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Figtree --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define as cores personalizadas para usar com as classes do Tailwind */
+        body {
+            font-family: 'Figtree', sans-serif;
+            background-color: #fee600; /* Amarelo Vivo */
+            color: #0a0080; /* Azul Escuro como cor de texto padrão */
+        }
+        .text-dark-blue {
+            color: #0a0080; /* Azul Escuro */
+        }
+        .text-medium-blue {
+            color: #0264eb; /* Azul Médio */
+        }
+        .bg-medium-blue {
+            background-color: #0264eb; /* Azul Médio */
+        }
+        
+        /* Estilo geral da caixa de cálculo */
+        .calculator-box {
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            width: 240px; /* Alterado de 230px para 240px */
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo para os inputs */
+        .calculator-input {
+            width: 100%;
+            border: none;
+            background-color: transparent;
+            text-align: center;
+            font-weight: 900; /* Black */
+            font-size: 4rem; /* 64px */
+            padding: 0;
+            margin: 0;
+            font-family: 'Figtree', sans-serif; /* Garante que o input use a fonte correta */
+        }
+        .calculator-input:focus {
+            outline: none;
+            ring: 0;
+            box-shadow: none;
+        }
+
+        /* Variação de cor para o input ACOS */
+        .calculator-input.acos {
+            color: #0264eb;
+        }
+
+        /* Variação de cor para o input ROAS */
+        .calculator-input.roas {
+            color: #ffffff;
+        }
+        
+        /* Remove setas de input de número */
+        .calculator-input::-webkit-outer-spin-button,
+        .calculator-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .calculator-input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        /* Estilo para os símbolos '%' e 'x' */
+        .symbol {
+            font-size: 40px;
+            font-weight: 900; /* Black */
+        }
+
+        /* Garante altura consistente para as descrições */
+        .description-box {
+            min-height: 96px; /* Garante altura consistente entre traduções */
+        }
+
+        /* Garante largura consistente para os cards de ACOS/ROAS para evitar pulos no layout durante a tradução */
+        .card-wrapper {
+            width: 380px; /* Aumentado para evitar quebra de linha em espanhol */
+        }
+
+        /* --- Estilos Mobile (aplicados em telas menores ou iguais a 'md') --- */
+        @media (max-width: 767px) { /* Tailwind's 'md' breakpoint is 768px */
+            /* Header */
+            .header-mobile-title {
+                display: flex;
+                flex-direction: column;
+                font-weight: 300;
+                line-height: 1.1;
+                font-size: 18px;
+            }
+            .logo-mobile { width: 100px; height: 25px; }
+
+            /* Calculator cards scaling */
+            .card-wrapper { 
+                width: 280px;
+            }
+            .calculator-box {
+                width: 200px;
+                height: 120px;
+                padding: 0.5rem;
+            }
+            
+            /* Text and element scaling inside cards */
+            #text-acos-intro, #text-roas-intro { font-size: 26px !important; }
+            .calculator-input { font-size: 3rem; }
+            .symbol { font-size: 32px; }
+            .description-box {
+                font-size: 9pt; /* Reduzido para 9pt */
+                margin-top: 0.5rem; /* Reduz o espaçamento */
+                line-height: 1.2; /* Espaçamento de linha reduzido */
+                min-height: auto; /* Permite que a caixa encolha */
+            }
+            
+            .parenthetical-text {
+                font-size: 7.5pt !important;
+            }
+
+            /* Objective section text */
+            .text-objective-mobile { 
+                font-size: 16px !important; 
+                line-height: 1.2 !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center h-screen p-4 md:p-6">
+
+    <main class="w-full max-w-5xl mx-auto flex flex-col flex-grow justify-center">
+        
+        <header class="w-full flex justify-between items-center flex-wrap gap-4 mb-10">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col gap-1">
+                    <img id="brazil-flag" src="https://www.svgrepo.com/show/401552/flag-for-brazil.svg" alt="Bandeira do Brasil" title="Português" width="20" height="20" class="cursor-pointer">
+                    <img id="latam-flag" src="https://www.svgrepo.com/show/401532/flag-for-argentina.svg" alt="Bandeira da Argentina" title="Español" width="20" height="20" class="cursor-pointer">
+                </div>
+                <!-- Título para Desktop -->
+                <h1 class="hidden md:block text-[42px] font-light text-dark-blue">Calculadora ACOS x ROAS</h1>
+                <!-- Título para Mobile -->
+                <div class="md:hidden text-dark-blue header-mobile-title">
+                    <span>Calculadora</span>
+                    <span>ACOS x ROAS</span>
+                </div>
+            </div>
+            <img src="https://i.imgur.com/9A11uqy.png" alt="Logo Mercado Ads" width="200" height="50" class="logo-mobile">
+        </header>
+
+        <!-- Container da Calculadora --><div class="flex flex-col md:flex-row items-center justify-center gap-0 md:gap-8 w-full md:mb-10 mb-4">
+
+            <!-- Card ACOS --><div class="flex flex-col items-center text-center card-wrapper">
+                <p id="text-acos-intro" class="text-[32px] font-bold text-medium-blue mb-2">Um <span class="font-black">ACOS</span> de</p>
+                <div class="calculator-box bg-white">
+                    <div class="relative flex items-center justify-center">
+                        <input id="acos-input" type="text" inputmode="decimal" class="calculator-input acos pr-10" placeholder="0">
+                        <span class="absolute right-0 symbol font-black text-medium-blue">%</span>
+                    </div>
+                </div>
+                <p id="text-acos-desc" class="description-box text-sm text-medium-blue mt-3 max-w-xs">
+                    O <span class="font-black">ACOS</span> (Advertising Cost of Sales) é o<br>
+                    percentual da receita por publicidade<br>
+                    investido em anúncios ou campanhas.
+                </p>
+            </div>
+            
+            <!-- Divisor --><div id="text-corresponds" class="text-2xl font-bold text-medium-blue my-2 md:my-0">
+                corresponde a...
+            </div>
+
+            <!-- Card ROAS --><div class="flex flex-col items-center text-center card-wrapper">
+                <p id="text-roas-intro" class="text-[32px] font-bold text-medium-blue mb-2">Um <span class="font-black">ROAS</span> de</p>
+                <div class="calculator-box bg-medium-blue">
+                    <div class="relative flex items-center justify-center">
+                         <input id="roas-input" type="text" inputmode="decimal" class="calculator-input roas pr-10" placeholder="0">
+                         <span class="absolute right-0 symbol font-black text-white">x</span>
+                    </div>
+                </div>
+                <p id="text-roas-desc" class="description-box text-sm text-medium-blue mt-3 max-w-xs">
+                    O <span class="font-black">ROAS</span> (Return on Advertising Spend)<br>
+                    mede quanto você ganhou em receita<br>
+                    por publicidade a cada <span class="font-bold">R$1,00</span> investido.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Seção de Objetivo --><div class="text-center max-w-[1220px] px-4 self-center mb-8">
+            <p id="text-objective-desktop" class="hidden md:block text-2xl text-dark-blue font-light"></p>
+            <p id="text-objective-mobile" class="block md:hidden text-2xl text-dark-blue font-light text-objective-mobile"></p>
+        </div>
+
+    </main>
+    
+    <footer class="text-center pb-4">
+        <p id="text-footer-motto" class="text-base font-bold text-dark-blue">Mercado Ads: Pessoas reais. Impacto Real.</p>
+        <p id="text-footer-author" class="mt-8" style="font-size: 7pt; color: #ffffff;">Desenvolvido por Silas Barboza | 2025</p>
+    </footer>
+
+    <script>
+        const acosInput = document.getElementById('acos-input');
+        const roasInput = document.getElementById('roas-input');
+
+        /**
+         * Formata um número para uma string com vírgula como separador decimal, se necessário.
+         * @param {number} num O número a ser formatado.
+         * @returns {string} O número formatado como string.
+         */
+        const formatNumber = (num) => {
+            if (isNaN(num) || !isFinite(num)) {
+                return '';
+            }
+            // Arredonda para uma casa decimal
+            const roundedNum = Math.round(num * 10) / 10;
+            
+            // Se o resultado for um número inteiro, retorna sem a casa decimal
+            if (roundedNum % 1 === 0) {
+                return roundedNum.toString();
+            }
+            
+            return roundedNum.toString().replace('.', ',');
+        };
+
+        /**
+         * Analisa um valor de input, tratando vírgulas e pontos como separador decimal.
+         * @param {string} value O valor do input.
+         * @returns {number} O valor numérico.
+         */
+        const parseValue = (value) => {
+            if (typeof value !== 'string') return NaN;
+            // Padroniza separador decimal para ponto (.)
+            const standardizedValue = value.replace(',', '.');
+
+            const validChars = [];
+            let hasDecimalPoint = false;
+
+            for (const char of standardizedValue) {
+                // Se for um dígito, adiciona
+                if (!isNaN(parseInt(char))) {
+                    validChars.push(char);
+                }
+                // Se for um ponto e ainda não tivermos um, adiciona
+                else if (char === '.' && !hasDecimalPoint) {
+                    validChars.push(char);
+                    hasDecimalPoint = true;
+                }
+            }
+            
+            return parseFloat(validChars.join(''));
+        };
+
+        /**
+         * Limita o input para 3 dígitos inteiros ou 2 com 1 casa decimal.
+         * @param {string} value O valor do input.
+         * @returns {string} O valor formatado e limitado.
+         */
+        const limitInput = (value) => {
+            value = value.replace(/[^0-9,.]/g, ''); // Permite apenas números, vírgula, ponto
+            value = value.replace(',', '.'); // Padroniza para ponto
+
+            let parts = value.split('.');
+            let integerPart = parts[0];
+            let decimalPart = parts.length > 1 ? parts[1] : undefined;
+            
+            // Limita a parte inteira
+            if (decimalPart !== undefined) {
+                // Máximo 2 dígitos antes do decimal
+                if (integerPart.length > 2) {
+                    integerPart = integerPart.substring(0, 2);
+                }
+            } else {
+                // Máximo 3 dígitos para inteiros
+                if (integerPart.length > 3) {
+                    integerPart = integerPart.substring(0, 3);
+                }
+            }
+
+            // Limita a parte decimal para um dígito
+            if (decimalPart && decimalPart.length > 1) {
+                decimalPart = decimalPart.substring(0, 1);
+            }
+
+            // Reconstrói o valor
+            if (decimalPart !== undefined) {
+                return integerPart + '.' + decimalPart;
+            } else {
+                return integerPart;
+            }
+        };
+
+
+        // Event listener para o campo ACOS
+        acosInput.addEventListener('input', (event) => {
+            const limitedValue = limitInput(event.target.value);
+            event.target.value = limitedValue.replace('.', ',');
+
+            // Prossegue com o cálculo
+            const acosValue = parseValue(limitedValue);
+
+            if (!isNaN(acosValue) && acosValue > 0) {
+                const roasValue = 100 / acosValue;
+                roasInput.value = formatNumber(roasValue);
+            } else {
+                roasInput.value = '';
+            }
+        });
+
+        // Event listener para o campo ROAS
+        roasInput.addEventListener('input', (event) => {
+            const limitedValue = limitInput(event.target.value);
+            event.target.value = limitedValue.replace('.', ',');
+
+            // Prossegue com o cálculo
+            const roasValue = parseValue(limitedValue);
+
+            if (!isNaN(roasValue) && roasValue > 0) {
+                const acosValue = 100 / roasValue;
+                acosInput.value = formatNumber(acosValue);
+            } else {
+                acosInput.value = '';
+            }
+        });
+
+        // Inicia a calculadora com valores de exemplo para demonstração
+        function initializeCalculator() {
+            acosInput.value = '20';
+            // Dispara o evento de input para calcular o ROAS correspondente
+            acosInput.dispatchEvent(new Event('input'));
+        }
+        
+        // Animação da bandeira
+        function animateFlags() {
+            const latamFlag = document.getElementById('latam-flag');
+            if (!latamFlag) return; // Sai se o elemento não for encontrado
+
+            const flagUrls = [
+                "https://www.svgrepo.com/show/401532/flag-for-argentina.svg",
+                "https://www.svgrepo.com/show/401694/flag-for-mexico.svg",
+                "https://www.svgrepo.com/show/401550/flag-for-bolivia.svg",
+                "https://www.svgrepo.com/show/401573/flag-for-chile.svg",
+                "https://www.svgrepo.com/show/401578/flag-for-colombia.svg",
+                "https://www.svgrepo.com/show/401597/flag-for-ecuador.svg",
+                "https://www.svgrepo.com/show/401723/flag-for-paraguay.svg",
+                "https://www.svgrepo.com/show/401725/flag-for-peru.svg",
+                "https://www.svgrepo.com/show/401789/flag-for-uruguay.svg",
+                "https://www.svgrepo.com/show/401797/flag-for-venezuela.svg",
+                "https://www.svgrepo.com/show/401581/flag-for-costa-rica.svg",
+                "https://www.svgrepo.com/show/401598/flag-for-el-salvador.svg",
+                "https://www.svgrepo.com/show/401623/flag-for-guatemala.svg",
+                "https://www.svgrepo.com/show/401632/flag-for-honduras.svg",
+                "https://www.svgrepo.com/show/401707/flag-for-nicaragua.svg",
+                "https://www.svgrepo.com/show/401721/flag-for-panama.svg",
+                "https://www.svgrepo.com/show/401595/flag-for-dominican-republic.svg" /* Dominican Republic */
+            ];
+
+            let currentFlagIndex = -1;
+
+            const nextFlag = () => {
+                currentFlagIndex = (currentFlagIndex + 1) % flagUrls.length;
+                latamFlag.src = flagUrls[currentFlagIndex];
+
+                // Argentina (índice 0) e México (índice 1) ficam por 2 segundos
+                const delay = (currentFlagIndex <= 1) ? 2000 : 1200;
+                
+                setTimeout(nextFlag, delay);
+            };
+
+            nextFlag(); // Inicia o loop de animação
+        }
+
+        // --- TRADUÇÃO ---
+        const translations = {
+            pt: {
+                'text-acos-intro': 'Um <span class="font-black">ACOS</span> de',
+                'text-roas-intro': 'Um <span class="font-black">ROAS</span> de',
+                'text-corresponds': 'corresponde a...',
+                'text-acos-desc': 'O <span class="font-black">ACOS</span> <span class="parenthetical-text">(Advertising Cost of Sales)</span> é o<br>percentual da receita por publicidade<br>investido em anúncios ou campanhas.',
+                'text-roas-desc': 'O <span class="font-black">ROAS</span> <span class="parenthetical-text">(Return on Advertising Spend)</span><br>mede quanto você ganhou em receita<br>por publicidade a cada <span class="font-bold">R$1,00</span> investido.',
+                'text-objective-desktop': 'Defina quanto você deseja ter de retorno nas campanhas com o <b class="font-black">ROAS Objetivo</b>:<br>Mais clareza para avaliar a rentabilidade de suas campanhas!',
+                'text-objective-mobile': 'Defina quanto você deseja ter de retorno<br>nas campanhas com o <b class="font-black">ROAS Objetivo</b>:<br>Mais clareza para avaliar a rentabilidade<br>de suas campanhas!',
+                'text-footer-motto': '<b class="font-black">Mercado Ads</b>: Pessoas reais. Impacto Real.',
+                'text-footer-author': 'Desenvolvido por Silas Barboza | 2025'
+            },
+            es: {
+                'text-acos-intro': 'Un <span class="font-black">ACOS</span> de',
+                'text-roas-intro': 'Un <span class="font-black">ROAS</span> de',
+                'text-corresponds': 'corresponde a...',
+                'text-acos-desc': 'El <span class="font-black">ACOS</span> <span class="parenthetical-text">(Costo de Ventas Publicitarias)</span><br>es el porcentaje de ingresos publicitarios<br>invertido en anuncios o campañas.',
+                'text-roas-desc': 'El <span class="font-black">ROAS</span> <span class="parenthetical-text">(Retorno de la Inversión Publicitaria)</span><br>mide cuántos ingresos generó<br>en publicidad por cada <span class="font-bold">$1</span> invertido.',
+                'text-objective-desktop': 'Define cuánto retorno quieres obtener de las campañas con <b class="font-black">ROAS objetivo</b>:<br>¡Más claridad para evaluar la rentabilidad de tus campañas!',
+                'text-objective-mobile': 'Define cuánto retorno quieres obtener<br>de las campañas con <b class="font-black">ROAS objetivo</b>:<br>¡Más claridad para evaluar la rentabilidad<br>de tus campañas!',
+                'text-footer-motto': '<b class="font-black">Mercado Ads</b>: Personas reales. Impacto real.',
+                'text-footer-author': 'Desarrollado por Silas Barboza | 2025'
+            }
+        };
+
+        function setLanguage(lang) {
+            const langPack = translations[lang];
+            if (!langPack) return;
+
+            // Atualiza a URL com o hash do idioma
+            window.location.hash = lang;
+
+            for (const key in langPack) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = langPack[key];
+                }
+            }
+        }
+
+        // Chama as funções de inicialização quando a página carrega
+        window.addEventListener('load', () => {
+            // Verifica o hash da URL para definir o idioma inicial
+            const validLangs = ['pt', 'es'];
+            let initialLang = window.location.hash.substring(1);
+            if (!validLangs.includes(initialLang)) {
+                initialLang = 'pt';
+            }
+            setLanguage(initialLang);
+            
+            initializeCalculator();
+            animateFlags();
+
+            // Adiciona event listeners para tradução
+            const brazilFlag = document.getElementById('brazil-flag');
+            const latamFlag = document.getElementById('latam-flag');
+            
+            if (brazilFlag) {
+                brazilFlag.addEventListener('click', () => setLanguage('pt'));
+            }
+            if (latamFlag) {
+                latamFlag.addEventListener('click', () => setLanguage('es'));
+            }
+        });
+
+    </script>
+</body>
+</html>
+
