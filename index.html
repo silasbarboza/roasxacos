@@ -7,9 +7,9 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.google-analytics.com https://www.facebook.com; img-src 'self' data: https:; font-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:;">
 
-    <!-- SEO Tags - Content is set dynamically by JavaScript -->
-    <title></title>
-    <meta name="description" content="">
+    <!-- SEO Tags - Default to Portuguese, dynamically updated by JS -->
+    <title>Calculadora de ACOS x ROAS | Conversor de Métricas | Calcular ROAS Objetivo</title>
+    <meta name="description" content="Converta ROAS para ACOS e vice-versa de forma fácil e rápida. Calcule ROAS Objetivo para campanhas do Mercado Livre.">
     
     <!-- Meta Domain Verification -->
     <meta name="facebook-domain-verification" content="jlj6eyccp0p5h4om5v96siep52gkf0" />
@@ -349,7 +349,8 @@
         acosInput.addEventListener('input', (event) => {
             if (event.isTrusted && !hasTrackedAcosInput) {
                 try {
-                    if (typeof gtag === 'function') gtag('event', 'calculator_use', { 'field': 'acos' });
+                    // Nome do evento alterado para PascalCase no GA4
+                    if (typeof gtag === 'function') gtag('event', 'CalculatorUse', { 'field': 'acos' }); 
                     if (typeof fbq === 'function') fbq('trackCustom', 'CalculatorUse', { field: 'acos' });
                 } catch (e) { console.error('Tracking error:', e); }
                 hasTrackedAcosInput = true;
@@ -364,7 +365,8 @@
         roasInput.addEventListener('input', (event) => {
             if (event.isTrusted && !hasTrackedRoasInput) {
                 try {
-                    if (typeof gtag === 'function') gtag('event', 'calculator_use', { 'field': 'roas' });
+                    // Nome do evento alterado para PascalCase no GA4
+                    if (typeof gtag === 'function') gtag('event', 'CalculatorUse', { 'field': 'roas' }); 
                     if (typeof fbq === 'function') fbq('trackCustom', 'CalculatorUse', { field: 'roas' });
                 } catch (e) { console.error('Tracking error:', e); }
                 hasTrackedRoasInput = true;
@@ -535,7 +537,9 @@
                     const authorLink = event.target.closest('#text-footer-author a');
                     if (authorLink) {
                         try {
-                            if (typeof gtag === 'function') gtag('event', 'author_link_click', { 'link_url': authorLink.href });
+                            // Evento para GA4 (mantendo consistência com o nome do Pixel)
+                            if (typeof gtag === 'function') gtag('event', 'AuthorLinkClick', { 'link_url': authorLink.href }); 
+                            // Evento para Meta Pixel
                             if (typeof fbq === 'function') fbq('trackCustom', 'AuthorLinkClick');
                         } catch (e) { console.error('Tracking error:', e); }
                     }
