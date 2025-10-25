@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1500 1000" style="enable-background:new 0 0 1500 1000;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_00000029036508691535282570000003388092967544063417_);}
+	.st1{fill:#012169;}
+	.st2{fill:#FFFFFF;}
+	.st3{clip-path:url(#SVGID_00000023972074682547925040000014868989181327255207_);}
+	.st4{fill:#C8102E;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="1500" height="1000"/>
+	</defs>
+	<clipPath id="SVGID_00000157988105469814146480000010014458417274025644_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#SVGID_00000157988105469814146480000010014458417274025644_);">
+		<g>
+			<path class="st1" d="M-83.3,0v1000h1666.7V0H-83.3z"/>
+		</g>
+		<g>
+			<path d="M-83.3,0l1666.7,1000 M1583.3,0L-83.3,1000"/>
+			<polygon class="st2" points="1531.9,1085.7 750,616.6 -31.9,1085.7 -134.8,914.3 555.6,500 -134.8,85.7 -31.9,-85.7 750,383.4 
+				1531.9,-85.7 1634.8,85.7 944.4,500 1634.8,914.3 			"/>
+		</g>
+		<g>
+			<defs>
+				<polygon id="SVGID_00000178174997435216368410000009010081980249246910_" points="750,500 1583.3,500 1583.3,1000 750,1000 
+					-83.3,1000 -83.3,500 -83.3,0 750,0 1583.3,0 				"/>
+			</defs>
+			<clipPath id="SVGID_00000060717269459878650810000000834351981395671465_">
+				<use xlink:href="#SVGID_00000178174997435216368410000009010081980249246910_"  style="overflow:visible;"/>
+			</clipPath>
+			<g style="clip-path:url(#SVGID_00000060717269459878650810000000834351981395671465_);">
+				<path d="M-83.3,0l1666.7,1000 M1583.3,0L-83.3,1000"/>
+				<polygon class="st4" points="1549,1057.2 750,577.7 -49,1057.2 -117.6,942.8 620.4,500 -117.6,57.2 -49,-57.2 750,422.3 
+					1549,-57.2 1617.6,57.2 879.6,500 1617.6,942.8 				"/>
+			</g>
+		</g>
+		<g>
+			<path class="st4" d="M-116.7,366.7h733.3v-400h266.7v400h733.3v266.7H883.3v400H616.7v-400h-733.3V366.7z"/>
+			<path class="st2" d="M916.7,1066.7H583.3v-400H-150V333.3h733.3v-400h333.3v400H1650v333.3H916.7V1066.7z M650,1000h200V600
+				h733.3V400H850V0H650v400H-83.3v200H650V1000z"/>
+		</g>
+	</g>
+</g>
+</svg>
