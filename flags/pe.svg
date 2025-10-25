@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Flag_of_Peru" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 1500 1000" style="enable-background:new 0 0 1500 1000;" xml:space="preserve">
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 577.8" style="enable-background:new 0 0 800 577.8;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#D91023;}
-	.st1{fill:#FFFFFF;}
+	.st1{fill:#EEEEEE;}
 </style>
-<g>
-	<rect class="st0" width="1500" height="1000"/>
-	<rect x="500" class="st1" width="500" height="1000"/>
-</g>
+<path class="st0" d="M88.9,0C39.8,0,0,39.8,0,88.9v400c0,49.1,39.8,88.9,88.9,88.9h177.8V0H88.9z"/>
+<path class="st1" d="M266.7,0h266.7v577.8H266.7V0z"/>
+<path class="st0" d="M711.1,0H533.3v577.8h177.8c49.1,0,88.9-39.8,88.9-88.9v-400C800,39.8,760.2,0,711.1,0z"/>
 </svg>

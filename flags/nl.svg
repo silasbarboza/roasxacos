@@ -3,11 +3,11 @@
 <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 800 577.8" style="enable-background:new 0 0 800 577.8;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FBD116;}
-	.st1{fill:#22408C;}
-	.st2{fill:#CE2028;}
+	.st0{fill:#EEEEEE;}
+	.st1{fill:#AE1F28;}
+	.st2{fill:#20478B;}
 </style>
-<path class="st0" d="M711.1,0H88.9C39.8,0,0,39.8,0,88.9v200h800v-200C800,39.8,760.2,0,711.1,0z"/>
-<path class="st1" d="M0,288.9h800v155.6H0V288.9z"/>
-<path class="st2" d="M0,488.9c0,49.1,39.8,88.9,88.9,88.9h622.2c49.1,0,88.9-39.8,88.9-88.9v-44.4H0V488.9z"/>
+<path class="st0" d="M0,200h800v177.8H0V200z"/>
+<path class="st1" d="M711.1,0H88.9C39.8,0,0,39.8,0,88.9V200h800V88.9C800,39.8,760.2,0,711.1,0z"/>
+<path class="st2" d="M88.9,577.8h622.2c49.1,0,88.9-39.8,88.9-88.9V377.8H0v111.1C0,538,39.8,577.8,88.9,577.8z"/>
 </svg>

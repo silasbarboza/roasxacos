@@ -1,1 +1,28 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1500 1000"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#002b7f;}.cls-4{fill:#fff;}.cls-5{fill:#ce1126;}</style><clipPath id="clip-path"><rect class="cls-1" x="-0.23" width="1500" height="1000"/></clipPath></defs><title>Flag-of-Costa Rica</title><g class="cls-2"><rect class="cls-3" x="-0.23" width="1500" height="1000"/><rect class="cls-4" x="-0.23" y="166.66" width="1500" height="666.66"/><rect class="cls-5" x="-0.23" y="333.34" width="1500" height="333.33"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 577.8" style="enable-background:new 0 0 800 577.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#002B7F;}
+	.st1{fill:#EEEEEE;}
+	.st2{fill:#CE1225;}
+	.st3{fill:#F4CB58;}
+	.st4{fill:#DCA841;}
+	.st5{fill:#89C5E4;}
+	.st6{fill:#088930;}
+</style>
+<path class="st0" d="M800,488.9c0,49.1-39.8,88.9-88.9,88.9H88.9C39.8,577.8,0,538,0,488.9v-400C0,39.8,39.8,0,88.9,0h622.2
+	C760.2,0,800,39.8,800,88.9V488.9z"/>
+<path class="st1" d="M0,88.9h800v400H0V88.9z"/>
+<path class="st2" d="M0,177.8h800V400H0V177.8z"/>
+<ellipse class="st1" cx="188.9" cy="288.9" rx="77.8" ry="88.9"/>
+<path class="st3" d="M228.2,322.2c0,18.4-17.6,46.2-39.3,46.2s-39.3-27.8-39.3-46.2c0-18.4,17.6-33.3,39.3-33.3
+	S228.2,303.8,228.2,322.2z"/>
+<ellipse class="st4" cx="188.9" cy="322.2" rx="55.6" ry="33.3"/>
+<ellipse class="st5" cx="188.9" cy="244.4" rx="33.3" ry="22.2"/>
+<ellipse class="st6" cx="188.9" cy="300" rx="33.3" ry="55.6"/>
+<ellipse class="st4" cx="188.9" cy="255.6" rx="33.3" ry="11.1"/>
+<path class="st5" d="M222.2,288.9c0,24.5-14.9,44.4-33.3,44.4s-33.3-19.9-33.3-44.4s14.9-33.3,33.3-33.3S222.2,264.4,222.2,288.9z"
+	/>
+<ellipse class="st4" cx="188.9" cy="300" rx="33.3" ry="11.1"/>
+</svg>
