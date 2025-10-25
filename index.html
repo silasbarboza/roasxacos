@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Content Security Policy (Updated for Facebook domains) -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.google-analytics.com https://connect.facebook.net https://*.facebook.com; img-src 'self' data: https: https://*.facebook.com; font-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:;">
+    <!-- Content Security Policy (Adjusted img-src) -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://www.google-analytics.com https://www.facebook.com; img-src 'self' data: https:; font-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:;">
 
-    <!-- SEO Tags - Default to Portuguese, dynamically updated by JS -->
+    <!-- SEO Tags - Content is set dynamically by JavaScript -->
     <title>Calculadora de ACOS x ROAS | Conversor de Métricas | Calcular ROAS Objetivo</title>
     <meta name="description" content="Converta ROAS para ACOS e vice-versa de forma fácil e rápida. Calcule ROAS Objetivo para campanhas do Mercado Livre.">
     
     <!-- Meta Domain Verification -->
     <meta name="facebook-domain-verification" content="jlj6eyccp0p5h4om5v96siep52gkf0" />
 
-    <link rel="icon" href="https://www.svgrepo.com/show/513281/chart-line.svg">
+    <link rel="icon" href="res/favicon.svg">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RB3T4EVN4"></script>
@@ -217,8 +217,8 @@
         <header class="w-full flex justify-between items-center flex-wrap gap-4 mb-10">
             <div class="flex items-center gap-3">
                 <div class="flex flex-col gap-1">
-                    <img id="brazil-flag" src="https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/br.svg" alt="Bandeira do Brasil" title="Português" width="20" height="20" class="cursor-pointer">
-                    <img id="latam-flag" src="https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/ar.svg" alt="Bandeira da Argentina" title="Español" width="20" height="20" class="cursor-pointer">
+                    <img id="brazil-flag" src="flags/br.svg" alt="Bandeira do Brasil" title="Português" width="30" height="20" class="cursor-pointer">
+                    <img id="latam-flag" src="flags/ar.svg" alt="Bandeira da Argentina" title="Español" width="30" height="20" class="cursor-pointer">
                 </div>
                 <!-- Título para Desktop -->
                 <h1 class="hidden md:block text-[42px] font-light text-dark-blue">Calculadora ACOS x ROAS</h1>
@@ -385,7 +385,14 @@
         function animateFlags() {
             const latamFlag = document.getElementById('latam-flag');
             if (!latamFlag) return;
-            const flagUrls = ["https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/ar.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/mx.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/bo.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/cl.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/co.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/ec.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/py.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/pe.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/uy.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/ve.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/cr.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/sv.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/gt.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/hn.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/ni.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/pa.svg","https://raw.githubusercontent.com/lipis/flag-icons/5f40463ce1d8731f4e22dcb8acbc715b01573c54/flags/1x1/do.svg"];
+            // URLs atualizadas para caminhos locais e nomes corrigidos
+            const flagUrls = [
+                "flags/ar.svg", "flags/mx.svg", "flags/bo.svg", "flags/cl.svg",
+                "flags/co.svg", "flags/ec.svg", "flags/py.svg", "flags/pe.svg",
+                "flags/uy.svg", "flags/ve.svg", "flags/cr.svg", "flags/sv.svg",
+                "flags/gt.svg", "flags/ho.svg", // Honduras corrigido para hn
+                "flags/ni.svg", "flags/pa.svg", "flags/rd.svg"  // Rep. Dominicana corrigido para do
+            ];
             let currentFlagIndex = -1;
             const nextFlag = () => {
                 currentFlagIndex = (currentFlagIndex + 1) % flagUrls.length;
